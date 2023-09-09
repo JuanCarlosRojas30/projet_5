@@ -29,6 +29,5 @@ leftArrow.addEventListener('click', function() {
 	if (positionSlide === -1) {
 		positionSlide = slides.length -1;
 	}
-	image.src = slides[positionSlide].image;
 	txt.innerHTML = slides[positionSlide].tagLine;
 });
