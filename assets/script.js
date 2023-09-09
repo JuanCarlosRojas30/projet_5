@@ -1,45 +1,34 @@
 const slides = [
 	{
-		"image":"slide1.jpg",
+		"image":"./assets/images/slideshow/slide1.jpg",
 		"tagLine":"Impressions tous formats <span>en boutique et en ligne</span>"
 	},
 	{
-		"image":"slide2.jpg",
+		"image":"./assets/images/slideshow/slide2.jpg",
 		"tagLine":"Tirages haute définition grand format <span>pour vos bureaux et events</span>"
 	},
 	{
-		"image":"slide3.jpg",
+		"image":"./assets/images/slideshow/slide3.jpg",
 		"tagLine":"Grand choix de couleurs <span>de CMJN aux pantones</span>"
 	},
 	{
-		"image":"slide4.png",
+		"image":"./assets/images/slideshow/slide4.png",
 		"tagLine":"Autocollants <span>avec découpe laser sur mesure</span>"
 	}
 ]
 
-let position = 0;
+const leftArrow = document.querySelector('.arrow_left');
+const rightArrow = document.querySelector('.arrow_right');
+const image = document.querySelector('.banner-img');
+const txt = document.querySelector('.banner-txt');
 
-var arrowLeft = document.getElementById("arrow_left")
-arrowLeft.addEventListener("click", previous)
+let positionSlide = 0;
 
-function previous() {
-	position = position - 1;
-	if(position === -1) {position = (slides.length - 1);}
-
-	displaySlide();
-}
-
-var arrowRigth = document.getElementById("arrow_right")
-arrowRigth.addEventListener("click", next)
-
-function next() {
-	position = position + 1;
-	if(position === slides.length) {position = 0;}
-
-	displaySlide();
-}
-
-function displaySlide() {
-	const tagLine = document.getElementById("tagLine");
-	tagLine.innerHTML = slides[position].tagLine;
-}
+leftArrow.addEventListener('click', function() {
+	positionSlide--;
+	if (positionSlide === -1) {
+		positionSlide = slides.length -1;
+	}
+	image.src = slides[positionSlide].image;
+	txt.innerHTML = slides[positionSlide].tagLine;
+});
