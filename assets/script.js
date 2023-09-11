@@ -17,6 +17,8 @@ const slides = [
 	}
 ]
 
+// Déclaration des constantes
+
 const leftArrow = document.querySelector('.arrow_left');
 const rightArrow = document.querySelector('.arrow_right');
 const image = document.querySelector('.banner-img');
@@ -24,6 +26,8 @@ const txt = document.querySelector('.banner-txt');
 const dots = document.querySelector('.dots');
 
 let positionSlide = 0;
+
+// Fonctions
 
 leftArrow.addEventListener('click', function() {
 	positionSlide--;
@@ -50,16 +54,12 @@ rightArrow.addEventListener('click', function() {
 	}
 	txt.innerHTML = slides[positionSlide].tagLine;
 	image.setAttribute("src", "./assets/images/slideshow/" + slides[positionSlide].image )
+	const dotList = document.getElementsByClassName('dot') 
+	for(let i=0;i<dotList.length;i++){
+		dotList[i].classList.remove("dot_selected");
+		if(i === positionSlide){
+			dotList[i].classList.add("dot_selected");
+		}
+	}
 });
 
-//ajouter les dots
-
-for(let i=0;i<slides.length;i++){
-	if(i===0){
-		dots.innerHTML = "<span class='dot dot_selected'></span>";
-	}
-	else 
-	{
-		dots.innerHTML += "<span class='dot'></span>";
-	}
-}
